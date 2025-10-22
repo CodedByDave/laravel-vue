@@ -8,6 +8,8 @@ import {
     ChevronLeft,
     ChevronRight,
     ChevronDown,
+    Settings,
+    LogOut
 } from "lucide-vue-next";
 
 const sidebarOpen = ref(true);
@@ -81,17 +83,19 @@ const dropdownOpen = ref(false);
             <div v-if="dropdownOpen" class="px-4 pb-4 space-y-2">
                 <Link
                     :href="route('profile.edit')"
-                    class="block text-sm text-gray-300 hover:text-white"
+                    class="flex items-center gap-2 text-sm text-gray-300 hover:text-white"
                 >
-                    Settings
+                    <Settings class="w-4 h-4" />
+                    <span>Settings</span>
                 </Link>
                 <Link
                     method="post"
                     as="button"
                     :href="route('logout')"
-                    class="block text-sm text-gray-300 hover:text-white"
+                    class="flex items-center gap-2 text-sm text-gray-300 hover:text-white"
                 >
-                    Log out
+                    <LogOut class="w-4 h-4" />
+                    <span>Log out</span>
                 </Link>
             </div>
         </div>
