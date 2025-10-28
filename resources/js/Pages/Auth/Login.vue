@@ -6,7 +6,7 @@ import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
-import { Head, Link, useForm } from "@inertiajs/vue3";
+import { Form, Head, Link, useForm } from "@inertiajs/vue3";
 import { Presentation } from "lucide-vue-next";
 import Swal from "sweetalert2";
 
@@ -24,17 +24,19 @@ const form = useForm({
 const showPassword = ref(false);
 
 const submit = () => {
-    form.post(route("login"), {
+    form.post(route("login"),{
         preserveScroll: true,
         onSuccess: () => {
             Swal.fire({
-                icon: "success",
-                title: "Success!",
-                text: "Logged in successfully",
-                confirmButtonColor: "#3085d6",
-                timer: 3000,
-                timerProgressBar: true
-            })
+                icon: 'success',
+                title: 'Login Successful',
+                text: 'You have successfully logged in.',
+                timer: 2000,
+                showConfirmButton: false,
+                timerProgressBar: true,
+            }).then(() => {
+                window.location.ref = route('dashboard');
+            });
         },
         onFinish: () => form.reset("password"),
     });
